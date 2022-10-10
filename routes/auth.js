@@ -42,7 +42,6 @@ router.post("/login", async (req, res) => {
     if (!validPass) {
       return res.status(400).send({ message: "Email or Password is wrong" });
     } else {
-      const token = jwt.sign({ _id: userdt._id }, process.env.TOKEN_SECRET);
       res.status(201).send({
         message: `${userdt.email}, Welcome!`,
       });
