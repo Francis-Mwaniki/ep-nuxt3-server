@@ -1,1 +1,1 @@
-export default {data:{},prerenderedAt:1665137064402}
+module.exports = { data: {}, prerenderedAt: 1665137064402 };
