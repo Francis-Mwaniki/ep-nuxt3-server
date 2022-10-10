@@ -35,14 +35,14 @@ router.post("/login", async (req, res) => {
   //checking if email exists
   const userdt = await User.findOne({ email: req.body.email });
   if (!userdt) {
-    return res.status(400).send({ message: "Username is not found" });
+    return res.status(400).json({ message: "Username is not found" });
   } else {
     //validating if password is correct
     const validPass = await bcrypt.compare(req.body.password, userdt.password);
     if (!validPass) {
-      return res.status(400).send({ message: "Email or Password is wrong" });
+      return res.status(400).json({ message: "Email or Password is wrong" });
     } else {
-      res.json({ message: `${userdt.email}, Welcome!` });
+      res.status(200).json({ message: `${userdt.email}, Welcome!` });
     }
   }
 });

@@ -12,7 +12,6 @@ dotenv.config();
 mongoose.connect(process.env.DB_CONNECT, () => {
   console.log("connected to the db");
 });
-
 //middlewares
 app.use(bodyParser.json());
 app.use(cors());
