@@ -1,4 +1,4 @@
-import{q as k,i as w,j as b,s as h,o,l as s,v as r,x as a,y as f,z as p,F as d,A as _,t as m,B as x}from"./entry.4b96efe3.js";import{V as v}from"./verticalNav.dbd263f2.js";import{_ as z}from"./catoon.37c65e86.js";const j={components:{VerticalNav1:v},setup(){let n=w(""),i=w([{id:1,title:"BINTI WA ZAYUNI",desc:`1. Binti wa Zayuni kweli amevaa utukufu, amevaa jua
+import{q as k,i as w,j as b,s as h,o,l as s,v as r,x as a,y as f,z as p,F as d,A as _,t as m,B as x}from"./entry.76420d61.js";import{V as v}from"./verticalNav.119cbe2e.js";import{_ as z}from"./catoon.37c65e86.js";const j={components:{VerticalNav1:v},setup(){let n=w(""),i=w([{id:1,title:"BINTI WA ZAYUNI",desc:`1. Binti wa Zayuni kweli amevaa utukufu, amevaa jua
                     na nyota katika mwili wake, naye binti wa Babeli
                     amevaa kiulimwengu na majina ya matusi kwake
                     Mungu Mwenyenzi.
