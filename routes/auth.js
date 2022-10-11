@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
     if (!validPass) {
       return res.status(400).json({ message: "Email or Password is wrong" });
     } else {
-      res.status(200).json({ message: `${userdt.email}, Welcome!` });
+      res.status(200).json({ message: `Welcome!` });
     }
   }
 });
