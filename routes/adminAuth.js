@@ -1,9 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const mongoose = require("mongoose");
 const jwtUser = require("../model/admin");
-
 //routes
 router.post("/AdminRegister", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
@@ -41,7 +39,7 @@ router.post("/AdminLogin", async (req, res) => {
     res.status(404).send({ message: "error" });
   }
 });
-router.get("/", async (req, res) => {
+router.get("/a", async (req, res) => {
   try {
     const cookie = req.cookies;
 
