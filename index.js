@@ -23,7 +23,7 @@ app.use(
   })
 );
 app.use("/api/v1", authRoutes);
-app.use("/api/user", AdminRoutes);
+app.use(AdminRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/dist/"));

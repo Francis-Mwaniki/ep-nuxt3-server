@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const jwtUser = require("../model/admin");
 //routes
-router.post("/AdminRegister", async (req, res) => {
+router.post("/api/user/AdminRegister", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   console.log(req.body);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -17,7 +17,7 @@ router.post("/AdminRegister", async (req, res) => {
   res.send({ message: `${data.name} created successfully` });
 });
 
-router.post("/AdminLogin", async (req, res) => {
+router.post("/api/user/AdminLogin", async (req, res) => {
   try {
     let user = await jwtUser.findOne({ email: req.body.email });
     let { password, ...data } = user.toJSON();
@@ -39,7 +39,7 @@ router.post("/AdminLogin", async (req, res) => {
     res.status(404).send({ message: "error" });
   }
 });
-router.get("/a", async (req, res) => {
+router.get("/api/user", async (req, res) => {
   try {
     const cookie = req.cookies;
 
@@ -55,7 +55,7 @@ router.get("/a", async (req, res) => {
     return res.status(401).send({ message: "Unauthenticated" });
   }
 });
-router.post("/AdminLogout", (req, res) => {
+router.post("/api/user/AdminLogout", (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
 
   return res.send({ message: "success" });
