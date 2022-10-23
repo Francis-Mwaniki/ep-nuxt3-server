@@ -2,9 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
-const postRoutes = require("./routes/post");
+const AdminRoutes = require("./routes/adminAuth");
 //express app
 const app = express();
 //DB connections
@@ -14,9 +15,15 @@ mongoose.connect(process.env.DB_CONNECT, () => {
 });
 //middlewares
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000", "http://localhost:3001"],
+  })
+);
 app.use("/api/v1", authRoutes);
-app.use("/api/post", postRoutes);
+app.use("/api/user", AdminRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/dist/"));
