@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const AdminRoutes = require("./routes/adminAuth");
+const SongsRoutes = require("./routes/modifySongs");
 //express app
 const app = express();
 //DB connections
@@ -24,6 +25,7 @@ app.use(
 );
 app.use("/api/v1", authRoutes);
 app.use(AdminRoutes);
+app.use(SongsRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/dist/"));

@@ -14,7 +14,7 @@ router.post("/api/user/AdminRegister", async (req, res) => {
   });
   await user.save();
   let { password, ...data } = user.toJSON();
-  res.send({ message: `${data.name} created successfully` });
+  res.send({ message: `${data.name} Added as Admin` });
 });
 
 router.post("/api/user/AdminLogin", async (req, res) => {
@@ -26,7 +26,7 @@ router.post("/api/user/AdminLogin", async (req, res) => {
       console.log("User not found");
       return res.json({ message: "User not found" });
     } else if (!validPass) {
-      return res.status(404).send({ message: "Invalid Credential" });
+      return res.status(400).send({ message: "Invalid Credential" });
     } else {
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
       res.cookie("jwt", token, {
@@ -36,7 +36,7 @@ router.post("/api/user/AdminLogin", async (req, res) => {
       res.send({ message: "success" });
     }
   } catch (error) {
-    res.status(404).send({ message: "error" });
+    res.status(400).send({ message: "Invalid Credentials!" });
   }
 });
 router.get("/api/user", async (req, res) => {
@@ -58,7 +58,7 @@ router.get("/api/user", async (req, res) => {
 router.post("/api/user/AdminLogout", (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
 
-  return res.send({ message: "success" });
+  return res.send({ message: "You're logged out!!" });
 });
 //export router
 module.exports = router;
